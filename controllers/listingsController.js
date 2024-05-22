@@ -21,7 +21,8 @@ exports.newListing = (req, res) => {
         const listingId = result.insertId;
         const images = req.files.map(file => ({
             listing_id: listingId,
-            image_path: path.join('uploads', file.filename),
+            //            image_path: path.join('uploads', file.filename),
+            image_path: file.location,
             is_featured: false 
         }));
 
@@ -62,7 +63,8 @@ exports.updateListing = (req, res) => {
         if (req.files && req.files.length > 0) {
             const newImages = req.files.map(file => ({
                 listing_id: listing_id,
-                image_path: path.join('uploads', file.filename),
+                //image_path: path.join('uploads', file.filename),
+                image_path: file.location,
                 is_featured: false 
             }));
 
